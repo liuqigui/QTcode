@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>IMG_20210705_210539.jpg</file>
+        <file>IMG_20230221_081131.jpg</file>
+        <file>R-C.gif</file>
+        <file>反面.jpg</file>
+        <file>学生证.jpg</file>
+        <file>研究生学生证.jpg</file>
+        <file>银行卡.jpg</file>
+        <file>正面.jpg</file>
+    </qresource>
+</RCC>

@@ -15,7 +15,7 @@ signals:
     void mySignal(); //emit mySignal()
 
 public slots:
-    void mySlot();
+//    void mySlot();
 };
 
 #endif // MYWIDGET_H
