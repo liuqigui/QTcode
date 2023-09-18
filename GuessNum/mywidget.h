@@ -15,6 +15,12 @@ public:
     explicit MyWidget(QWidget *parent = 0);
     ~MyWidget();
 
+    //自定义槽函数
+    void dealNum();
+
+private slots:
+    void on_pushButtonStart_clicked();
+
 private:
     Ui::MyWidget *ui;
 };
