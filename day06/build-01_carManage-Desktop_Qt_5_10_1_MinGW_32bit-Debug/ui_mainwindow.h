@@ -33,6 +33,8 @@
 #include <QtWidgets/QToolBox>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <histogram.h>
+#include <pie.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -84,19 +86,21 @@ public:
     QWidget *calc;
     QGridLayout *gridLayout_3;
     QWidget *widgetZhu;
-    QWidget *widgetW;
-    QWidget *widget;
+    QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_7;
     QSpacerItem *horizontalSpacer_7;
-    QSpinBox *spinBox_2;
+    QLabel *label_10;
+    QComboBox *comboBoxFactory_2;
     QSpacerItem *horizontalSpacer_8;
+    Histogram *widgetW;
     QWidget *widgetPie;
-    QWidget *widget_2;
-    QWidget *layoutWidget_3;
+    QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_9;
     QSpacerItem *horizontalSpacer_11;
-    QSpinBox *spinBox_4;
+    QLabel *label_11;
+    QComboBox *comboBoxBrand_2;
     QSpacerItem *horizontalSpacer_12;
+    Pie *widgetH;
     QMenuBar *menuBar;
     QMenu *menu_guan_l;
     QToolBar *mainToolBar;
@@ -106,7 +110,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(543, 526);
+        MainWindow->resize(768, 562);
         actionCar = new QAction(MainWindow);
         actionCar->setObjectName(QStringLiteral("actionCar"));
         actionCalc = new QAction(MainWindow);
@@ -117,7 +121,7 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        horizontalSpacer = new QSpacerItem(184, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(296, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer, 0, 0, 1, 1);
 
@@ -130,7 +134,7 @@ public:
 
         gridLayout->addWidget(label, 0, 1, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(183, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(296, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
 
@@ -155,7 +159,7 @@ public:
         toolBox->setMinimumSize(QSize(300, 0));
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
-        page_2->setGeometry(QRect(0, 0, 300, 338));
+        page_2->setGeometry(QRect(0, 0, 357, 374));
         verticalLayout = new QVBoxLayout(page_2);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -297,7 +301,7 @@ public:
         toolBox->addItem(page_2, QString::fromUtf8("\345\207\272\345\224\256\350\275\246\350\276\206"));
         page_4 = new QWidget();
         page_4->setObjectName(QStringLiteral("page_4"));
-        page_4->setGeometry(QRect(0, 0, 300, 338));
+        page_4->setGeometry(QRect(0, 0, 357, 374));
         toolBox->addItem(page_4, QString::fromUtf8("\346\226\260\350\275\246\345\205\245\345\272\223"));
         splitter->addWidget(toolBox);
         textEdit = new QTextEdit(splitter);
@@ -316,58 +320,76 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         widgetZhu = new QWidget(calc);
         widgetZhu->setObjectName(QStringLiteral("widgetZhu"));
-        widgetW = new QWidget(widgetZhu);
-        widgetW->setObjectName(QStringLiteral("widgetW"));
-        widgetW->setGeometry(QRect(10, 50, 231, 321));
-        widget = new QWidget(widgetZhu);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 20, 231, 22));
-        horizontalLayout_7 = new QHBoxLayout(widget);
+        verticalLayout_3 = new QVBoxLayout(widgetZhu);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_7);
 
-        spinBox_2 = new QSpinBox(widget);
-        spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
+        label_10 = new QLabel(widgetZhu);
+        label_10->setObjectName(QStringLiteral("label_10"));
 
-        horizontalLayout_7->addWidget(spinBox_2);
+        horizontalLayout_7->addWidget(label_10);
+
+        comboBoxFactory_2 = new QComboBox(widgetZhu);
+        comboBoxFactory_2->setObjectName(QStringLiteral("comboBoxFactory_2"));
+
+        horizontalLayout_7->addWidget(comboBoxFactory_2);
 
         horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_8);
 
 
+        verticalLayout_3->addLayout(horizontalLayout_7);
+
+        widgetW = new Histogram(widgetZhu);
+        widgetW->setObjectName(QStringLiteral("widgetW"));
+
+        verticalLayout_3->addWidget(widgetW);
+
+
         gridLayout_3->addWidget(widgetZhu, 0, 0, 1, 1);
 
         widgetPie = new QWidget(calc);
         widgetPie->setObjectName(QStringLiteral("widgetPie"));
-        widget_2 = new QWidget(widgetPie);
-        widget_2->setObjectName(QStringLiteral("widget_2"));
-        widget_2->setGeometry(QRect(10, 50, 231, 321));
-        layoutWidget_3 = new QWidget(widgetPie);
-        layoutWidget_3->setObjectName(QStringLiteral("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(10, 20, 231, 22));
-        horizontalLayout_9 = new QHBoxLayout(layoutWidget_3);
+        verticalLayout_2 = new QVBoxLayout(widgetPie);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
-        horizontalLayout_9->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        horizontalLayout_9->setContentsMargins(0, 0, 0, 0);
         horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_11);
 
-        spinBox_4 = new QSpinBox(layoutWidget_3);
-        spinBox_4->setObjectName(QStringLiteral("spinBox_4"));
+        label_11 = new QLabel(widgetPie);
+        label_11->setObjectName(QStringLiteral("label_11"));
 
-        horizontalLayout_9->addWidget(spinBox_4);
+        horizontalLayout_9->addWidget(label_11);
+
+        comboBoxBrand_2 = new QComboBox(widgetPie);
+        comboBoxBrand_2->setObjectName(QStringLiteral("comboBoxBrand_2"));
+
+        horizontalLayout_9->addWidget(comboBoxBrand_2);
 
         horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_12);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_9);
+
+        widgetH = new Pie(widgetPie);
+        widgetH->setObjectName(QStringLiteral("widgetH"));
+
+        verticalLayout_2->addWidget(widgetH);
 
 
         gridLayout_3->addWidget(widgetPie, 0, 1, 1, 1);
@@ -379,7 +401,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 543, 23));
+        menuBar->setGeometry(QRect(0, 0, 768, 23));
         menu_guan_l = new QMenu(menuBar);
         menu_guan_l->setObjectName(QStringLiteral("menu_guan_l"));
         MainWindow->setMenuBar(menuBar);
@@ -423,6 +445,8 @@ public:
         buttonCancel->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210", nullptr));
         toolBox->setItemText(toolBox->indexOf(page_2), QApplication::translate("MainWindow", "\345\207\272\345\224\256\350\275\246\350\276\206", nullptr));
         toolBox->setItemText(toolBox->indexOf(page_4), QApplication::translate("MainWindow", "\346\226\260\350\275\246\345\205\245\345\272\223", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "\345\216\202\345\256\266\357\274\232", nullptr));
+        label_11->setText(QApplication::translate("MainWindow", "\345\223\201\347\211\214\357\274\232", nullptr));
         menu_guan_l->setTitle(QApplication::translate("MainWindow", "\351\224\200\345\224\256\347\256\241\347\220\206", nullptr));
     } // retranslateUi
 

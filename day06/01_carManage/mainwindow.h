@@ -17,6 +17,7 @@ public:
 
     void connectDB();   //连接数据库
     void initData();    //初始化
+    void initTongji();
 
 private slots:
     void on_actionCar_triggered();
@@ -32,6 +33,8 @@ private slots:
     void on_buttonCancel_clicked();
 
     void on_buttonSure_clicked();
+
+    void on_comboBoxFactory_2_currentIndexChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

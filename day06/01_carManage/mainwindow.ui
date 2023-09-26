@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
-    <height>526</height>
+    <width>768</width>
+    <height>562</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>184</width>
+        <width>296</width>
         <height>20</height>
        </size>
       </property>
@@ -48,7 +48,7 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>183</width>
+        <width>296</width>
         <height>20</height>
        </size>
       </property>
@@ -87,8 +87,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>300</width>
-              <height>338</height>
+              <width>357</width>
+              <height>374</height>
              </rect>
             </property>
             <attribute name="label">
@@ -276,8 +276,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>300</width>
-              <height>338</height>
+              <width>357</width>
+              <height>374</height>
              </rect>
             </property>
             <attribute name="label">
@@ -298,112 +298,100 @@
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
          <widget class="QWidget" name="widgetZhu" native="true">
-          <widget class="QWidget" name="widgetW" native="true">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>231</width>
-             <height>321</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QWidget" name="">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>231</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <spacer name="horizontalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="spinBox_2"/>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_8">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <spacer name="horizontalSpacer_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>厂家：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBoxFactory_2"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="Histogram" name="widgetW" native="true"/>
+           </item>
+          </layout>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QWidget" name="widgetPie" native="true">
-          <widget class="QWidget" name="widget_2" native="true">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>231</width>
-             <height>321</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QWidget" name="layoutWidget_3">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>231</width>
-             <height>22</height>
-            </rect>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_9">
-            <item>
-             <spacer name="horizontalSpacer_11">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="spinBox_4"/>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_12">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <spacer name="horizontalSpacer_11">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>品牌：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBoxBrand_2"/>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_12">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="Pie" name="widgetH" native="true"/>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -417,7 +405,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>543</width>
+     <width>768</width>
      <height>23</height>
     </rect>
    </property>
@@ -452,6 +440,20 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Pie</class>
+   <extends>QWidget</extends>
+   <header location="global">pie.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Histogram</class>
+   <extends>QWidget</extends>
+   <header location="global">histogram.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

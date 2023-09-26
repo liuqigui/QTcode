@@ -8,6 +8,8 @@
 #include <QDebug>
 #include "dockxml.h"
 #include <QStringList>
+#include "histogram.h"
+//#include <listWidget>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -26,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     initData();
 
     DockXML::createXML("../demo.xml");  //创建空的xml文件
+
+    initTongji();
 
 //    QStringList list;
 //    list <<"二汽神龙" << "毕加索" << "39" << "1" << "39";
@@ -49,7 +53,23 @@ MainWindow::MainWindow(QWidget *parent) :
 //        qDebug() << str.toUtf8().data();
 //    }
 
+//    ui->widgetW->SetMaxValue(50);
+//    ui->widgetW->AddItem("大众", 8, "red");
+//    ui->widgetW->AddItem("奥丁", 9, "red");
+//    ui->widgetW->AddItem("测试", 10, "red");
 
+//    QVector<SectorInfo> result;
+
+//    SectorInfo info;
+//    info.description = "已经出售";
+//    info.percent = 0.3 * 100;
+//    result.push_back(info);
+
+//    info.description = "剩余";
+//    info.percent = (1 - 0.3) * 100;
+//    result.push_back(info);
+
+//    ui->widgetH->setData(result);
 
 }
 
@@ -98,6 +118,7 @@ void MainWindow::initData()
     queryModel->setQuery("select name from factory;"); //sql语句
 
     ui->comboBoxFactory->setModel(queryModel);
+    ui->comboBoxFactory_2->setModel(queryModel);    //下拉连接数据库
 
     ui->last->setText("0"); //剩余数量
     ui->lineEditTotal->setEnabled(false);   //金额
@@ -116,7 +137,7 @@ void MainWindow::on_comboBoxFactory_currentIndexChanged(const QString &arg1)
         ui->lineEditTotal->clear(); //金额清空
         ui->spinBox->setValue(0);   //数量选择框
         ui->spinBox->setEnabled(false); //不让选择
-        ui->buttonSure->setEnabled(false);
+        ui->buttonSure->setEnabled(false);  //确认按钮不让选择
     }
     else
     {
@@ -135,6 +156,7 @@ void MainWindow::on_comboBoxFactory_currentIndexChanged(const QString &arg1)
         }
         ui->spinBox->setEnabled(true);
     }
+//    qDebug() << arg1;
 }
 
 void MainWindow::on_comboBoxBrand_currentIndexChanged(const QString &arg1)
@@ -283,15 +305,127 @@ void MainWindow::on_buttonSure_clicked()
 }
 
 
+void MainWindow::on_comboBoxFactory_2_currentIndexChanged(const QString &arg1)
+{
+    //厂家下拉框槽函数
+    if(arg1 == "请选择厂家")
+    {
+        //内容情况
+        ui->comboBoxBrand_2->clear(); //品牌下拉框清空
+    }
+    else
+    {
+        ui->widgetW->Clear();//每次清除一下柱状图
 
+        ui->comboBoxBrand_2->clear();
+        QSqlQuery query;
+        QString sql = QString("select name, price, sum, sell, last from brand where factory = '%1'").arg(arg1);
+        //select name from brand where factory = '一汽大众'
+        //执行sql语句
+        query.exec(sql);
 
+        //获取内容
+        while(query.next())
+        {
+            //设置柱状图
+            QString name = query.value(0).toString();
+            ui->comboBoxBrand_2->addItem(name);
+            qDebug() << query.value(0) << query.value(1) << query.value(2);
 
+            ui->widgetW->SetMaxValue(90);
+            QColor color(qrand()%255, qrand()%255, qrand()%255);
+            ui->widgetW->AddItem(query.value(0).toString(), query.value(4).toInt(), color);
+            query.value(0).clear();
+            query.value(4).clear();
 
+//            //设置饼图
+//            QVector<SectorInfo> result;
+//            SectorInfo info;
+//            info.description = "已经出售";
+//            info.percent = query.value(3).toFloat() / query.value(2).toFloat() * 100;
+//            result.push_back(info);
 
+//            info.description = "剩余";
+//            info.percent = 100 - info.percent ;
+//            result.push_back(info);
+//            ui->widgetH->setData(result);
+        }
+        if(query.next())
+        {
+            //设置饼图
+            QVector<SectorInfo> result;
+            SectorInfo info;
+            info.description = "已经出售";
+            info.percent = query.value(3).toFloat() / query.value(2).toFloat() * 100;
+            result.push_back(info);
 
+            info.description = "剩余";
+            info.percent = 100 - info.percent ;
+            result.push_back(info);
+            ui->widgetH->setData(result);
+        }
+    }
+//    qDebug() << arg1; //输出当前arg1的内容
 
+//        ui->widgetW->SetMaxValue(50);
+    //    ui->widgetW->AddItem("大众", 8, "red");
+    //    ui->widgetW->AddItem("奥丁", 9, "red");
+    //    ui->widgetW->AddItem("测试", 10, "red");
 
+    //    QVector<SectorInfo> result;
 
+    //    SectorInfo info;
+    //    info.description = "已经出售";
+    //    info.percent = 0.3 * 100;
+    //    result.push_back(info);
 
+    //    info.description = "剩余";
+    //    info.percent = (1 - 0.3) * 100;
+    //    result.push_back(info);
 
+    //    ui->widgetH->setData(result);
+}
+
+void MainWindow::initTongji()
+{
+    ui->widgetW->SetMaxValue(90);
+    void (QComboBox::* sigItemChanged)(const QString &) = &QComboBox::currentIndexChanged;
+//    connect(ui->comboBoxFactory_2, sigItemChanged, [=](const QString & name)
+//    {
+//        ui->widgetW->Clear();
+//        ui->comboBoxFactory_2->clear();
+//        QSqlQuery query;
+//        query.exec(QString("select name, sell from brand where factory = '%1'").arg(name));
+//        while(query.next())
+//        {
+//            QString name = query.value(0).toString();
+//            int sell = query.value(1).toInt();
+//            ui->comboBoxBrand_2->addItem(name);
+//            QColor color(qrand()%255, qrand()%255, qrand()%255);
+//            ui->widgetW->AddItem(name, sell, color);
+
+//        }
+//    });
+
+    connect(ui->comboBoxBrand_2, sigItemChanged, [=](const QString &name)
+    {
+        QSqlQuery query;
+        QVector<SectorInfo> vc;
+        query.exec(QString("select sell, last from brand where factory = '%1' and name = '%2'").arg(ui->comboBoxFactory_2->currentText()).arg(name));
+        if(query.next())
+        {
+            SectorInfo info;
+            float sell = query.value(0).toInt();
+            float last = query.value(1).toInt();
+            float sum = sell + last;
+            info.description = "已出售";
+            info.percent = sell/sum*100;
+            vc.push_back(info);
+            info.description = "剩余";
+            info.percent = 100 - info.percent;
+            vc.push_back(info);
+        }
+        ui->widgetH->setData(vc);
+    });
+}
 
