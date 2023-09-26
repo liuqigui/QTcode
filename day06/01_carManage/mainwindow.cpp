@@ -330,7 +330,7 @@ void MainWindow::on_comboBoxFactory_2_currentIndexChanged(const QString &arg1)
             //设置柱状图
             QString name = query.value(0).toString();
             ui->comboBoxBrand_2->addItem(name);
-            qDebug() << query.value(0) << query.value(1) << query.value(2);
+//            qDebug() << query.value(0) << query.value(1) << query.value(2);
 
             ui->widgetW->SetMaxValue(90);
             QColor color(qrand()%255, qrand()%255, qrand()%255);
